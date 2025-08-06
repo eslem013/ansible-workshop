@@ -1,0 +1,17 @@
+---
+- name: Use apache-webserver role
+  hosts: node2
+  become: true
+  pre_tasks:
+
+    - name: Output info before any role execution
+      ansible.builtin.debug:
+        msg: "Beginning web server configuration."
+
+  roles:
+    - apache-webserver
+
+  post_tasks:
+    - name: Output info before all roles are executed
+      ansible.builtin.debug:
+        msg: "Web server has been configured."
